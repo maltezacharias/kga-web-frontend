@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h2>Aktuelle Kleingruppenzuordnung:</h2></div>
+    <div class="panel-body">
+      <p>Sie sind aktuell der folgenden Kleingruppe zugeteilt:</p>
+      <p ng-hide="user.currentGroup">Noch keiner Gruppe zugeteilt</p>
+      <p ng-show="user.currentGroup"></p>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><h2>Kleingruppe auswählen</h2></div>
+    <div class="panel-body">
+      <p>Falls Sie bereits in einer Gruppe angemeldet sind und versuchen sich in einer
+      neuen Gruppe anzumelden, wird ihre ursprüngliche Gruppenzuordnung automatisch gelöscht.</p>
+
+      <p>Sollte die ausgewählte Gruppe bereits voll sein wenn Ihre Anfrage verarbeitet wird
+      bleiben Sie in Ihrer ursprünglichen Gruppe zugeordnet. Ist das Ummelden nicht erfolgreich
+      verlieren Sie also nicht ihren bisherigen Kleingruppenplatz</p>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Plätze verfügbar</th>
+          <th>Anmelden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="kleingruppe in kleingruppen">
+          <td>{{kleingruppe.number}}</td>
+          <td>{{kleingruppe.name}}</td>
+          <td>{{kleingruppe.remaining}}</td>
+          <td><button class="btn btn-primary" ng-click="inscribe()">Anmelden</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

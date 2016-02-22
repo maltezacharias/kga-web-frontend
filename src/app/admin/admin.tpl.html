@@ -1,0 +1,25 @@
+<div class="row">
+
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Einloggen für Kleingruppenanmeldung</h2>
+    Bitte loggen Sie sich mit Ihrer MUW-StudID (z.B. n0987654) und Ihrem Kennwort ein.
+    <label for="inputStudentId" class="sr-only">Matrikel-Nummer</label>
+    <input  type="text"
+            ng-model="studentId"
+            id="inputStudentId"
+            class="form-control"
+            placeholder="Matrikel-Nummer"
+            required
+            autofocus>
+    <label for="inputPassword" class="sr-only">Passwort</label>
+    <input  type="password"
+            ng-model="password"
+            id="inputPassword"
+            class="form-control"
+            placeholder="Passwort"
+            required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signIn()">Einloggen</button>
+  </form>
+  
+
+</div>

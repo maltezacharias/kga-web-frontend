@@ -1,21 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="ngBoilerplate" ng-controller="AppCtrl">
+<html ng-app="kga" ng-controller="AppCtrl">
   <head>
     <title ng-bind="pageTitle"></title>
+    <!-- File encoding -->
+    <meta charset="utf-8"/>
 
     <!-- social media tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@joshdmiller">
-    <meta name="twitter:title" content="ngBoilerplate">
-    <meta name="twitter:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
-    <meta name="twitter:creator" content="@joshdmiller">
-    <meta name="twitter:image:src" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846">
-    <meta property="og:title" content="ngBoilerplate" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://bit.ly/ngBoilerplate" />
-    <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846" />
-    <meta property="og:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- font awesome from BootstrapCDN -->
@@ -27,10 +17,6 @@
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
-    <!-- it's stupid to have to load it here, but this is for the +1 button -->
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-      { "parsetags": "explicit" }
-    </script>
   </head>
   <body>
     <div class="container">
@@ -44,11 +30,10 @@
             <span class="icon-bar"></span>
           </button>
           <div class="navbar-brand">
-            ngbp
+            <img src="assets/logo.gif" style="height:20px;"/>
+            KGA
             <small>
-              <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
-                v<%= version %>
-              </a>
+              v<%= version %>
             </small>
           </div>
         </div>
@@ -57,31 +42,31 @@
             <li ui-sref-active="active">
               <a href ui-sref="home">
                 <i class="fa fa-home"></i>
-                Home
+                Start
               </a>
             </li>
-            <li ui-sref-active="active">
-              <a href ui-sref="about">
-                <i class="fa fa-info-circle"></i>
-                What is it?
+            <li ui-sref-active="active" ng-hide="loggedIn">
+              <a href ui-sref="sign-in">
+                <i class="fa fa-sign-in"></i>
+                Anmelden
               </a>
             </li>
-            <li>
-              <a href="https://github.com/ngbp/ngbp#readme">
-                <i class="fa fa-book"></i>
-                Read the Docs
+            <li ui-sref-active="active" ng-show="loggedIn">
+              <a href ui-sref="inscribe">
+                <i class="fa fa-list"></i>
+                Kleingruppenanmeldung
               </a>
             </li>
-            <li>
-              <a href="https://github.com/ngbp/ngbp">
-                <i class="fa fa-github-alt"></i>
-                Github
+            <li ui-sref-active="active" ng-show="admin && loggedIn" ng-show>
+              <a href ui-sref="admin">
+                <i class="fa fa-lock"></i>
+                Administration
               </a>
             </li>
-            <li>
-              <a href="https://github.com/ngbp/ngbp/issues">
-                <i class="fa fa-comments"></i>
-                Support
+            <li ui-sref-active="active" ng-show="loggedIn">
+              <a href ng-click="signOut()">
+                <i class="fa fa-sign-out"></i>
+                {{user.studentId}} abmelden
               </a>
             </li>
           </ul>
@@ -94,25 +79,15 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-inner">
-          <ul class="social">
-            <li><a target="_blank" href="http://gplus.to/joshdmiller"><i class="fa fa-google-plus-sign"></i></a></li>
-            <li><a target="_blank" href="http://twitter.com/joshdmiller"><i class="fa fa-twitter-sign"></i></a></li>
-            <li><a target="_blank" href="http://linkedin.com/in/joshdmiller"><i class="fa fa-linkedin-sign"></i></a></li>
-            <li><a target="_blank" href="http://github.com/ngbp/ngbp"><i class="fa fa-github-sign"></i></a></li>
-          </ul>
-          
-
           <p>
-            (c) 2013 <a href="http://www.joshdavidmiller.com">Josh David Miller</a>. 
-            <a href="http://github.com/ngbp/ngbp/fork_select">Fork this</a>
-            to kickstart your next project.
+            Entwickelt von Studenten für Studenten mit <a href="http://github.com/ngbp/ngbp/fork_select">ngbp</a>.
             <br />
             ngbp is based on
             <a href="http://www.angularjs.org">AngularJS</a>,
-            <a href="http://getbootstrap.com">Bootstrap</a>, 
+            <a href="http://getbootstrap.com">Bootstrap</a>,
             <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
-            and 
-            <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.        
+            and
+            <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.
           </p>
         </div>
       </div>

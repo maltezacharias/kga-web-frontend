@@ -12,9 +12,8 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'ngBoilerplate.home', [
-  'ui.router',
-  'plusOne'
+angular.module( 'kga.home', [
+  'ui.router'
 ])
 
 /**
@@ -31,7 +30,7 @@ angular.module( 'ngBoilerplate.home', [
         templateUrl: 'home/home.tpl.html'
       }
     },
-    data:{ pageTitle: 'Home' }
+    data:{ pageTitle: 'Start' }
   });
 })
 
@@ -42,4 +41,3 @@ angular.module( 'ngBoilerplate.home', [
 })
 
 ;
-
