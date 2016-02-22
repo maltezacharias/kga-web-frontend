@@ -1,25 +1,57 @@
-<div class="row">
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h2>Kleingruppe anlegen</h2></div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="inputGroupNumber">Gruppennummer:</label>
+        <input type="text" id="inputGroupNumber" class="form-control" ng-model="newGroup.number"/>
+      </div>
+      <div class="form-group">
+        <label for="inputGroupName">Gruppenname:</label>
+        <input type="text" id="inputGroupName" class="form-control" ng-model="newGroup.name"/>
+      </div>
+      <div class="form-group">
+        <label for="inputGroupCapacity">Kapazität:</label>
+        <input type="text" id="inputGroupCapacity" class="form-control" ng-model="newGroup.capacity"/>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" ng-click="createGroup()">Anlegen</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h2>Liste der Kleingruppen</h2></div>
+    <div class="panel-body">
+    </div>
+  </div>
 
-  <form class="form-signin">
-    <h2 class="form-signin-heading">Einloggen für Kleingruppenanmeldung</h2>
-    Bitte loggen Sie sich mit Ihrer MUW-StudID (z.B. n0987654) und Ihrem Kennwort ein.
-    <label for="inputStudentId" class="sr-only">Matrikel-Nummer</label>
-    <input  type="text"
-            ng-model="studentId"
-            id="inputStudentId"
-            class="form-control"
-            placeholder="Matrikel-Nummer"
-            required
-            autofocus>
-    <label for="inputPassword" class="sr-only">Passwort</label>
-    <input  type="password"
-            ng-model="password"
-            id="inputPassword"
-            class="form-control"
-            placeholder="Passwort"
-            required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signIn()">Einloggen</button>
-  </form>
-  
+  <div class="panel panel-default">
+    <div class="panel-heading"><h2>Kleingruppe auswählen</h2></div>
+    <div class="panel-body">
+      <p>Falls Sie bereits in einer Gruppe angemeldet sind und versuchen sich in einer
+      neuen Gruppe anzumelden, wird ihre ursprüngliche Gruppenzuordnung automatisch gelöscht.</p>
 
+      <p>Sollte die ausgewählte Gruppe bereits voll sein wenn Ihre Anfrage verarbeitet wird
+      bleiben Sie in Ihrer ursprünglichen Gruppe zugeordnet. Ist das Ummelden nicht erfolgreich
+      verlieren Sie also nicht ihren bisherigen Kleingruppenplatz</p>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <!--<th>#</th>-->
+          <th>Name</th>
+          <th>Freie Plätze</th>
+          <th>Anmelden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="kleingruppe in kleingruppen">
+          <!--<td>{{kleingruppe.number}}</td>-->
+          <td>{{kleingruppe.name}}</td>
+          <td>{{kleingruppe.remaining}}</td>
+          <td><button class="btn btn-primary" ng-click="inscribe()">Anmelden</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

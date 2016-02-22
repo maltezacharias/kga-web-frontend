@@ -18,7 +18,11 @@ angular.module( 'kga.admin', [
 })
 
 .controller( 'AdminCtrl', function AdminCtrl( $scope ) {
-
+  $scope.newGroup = {
+    number: '',
+    name: '',
+    capacity: 0
+  };
 })
 
 ;

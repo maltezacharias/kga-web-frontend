@@ -23,7 +23,8 @@ angular.module( 'kga.inscribe', [
     $scope.kleingruppen.push({
       number: '' + counter ,
       name: 'Kleingruppe ' + counter,
-      remaining: Math.floor(Math.random()*10)
+      remaining: Math.floor(Math.random()*10),
+      capacity: 10
     });
   }
 })

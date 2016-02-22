@@ -20,6 +20,7 @@ angular.module( 'kga', [
   $scope.signOut = function signOut(){
     $rootScope.loggedIn = false;
     delete($rootScope.user);
+    $location.path('/home');
   };
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
