@@ -18,9 +18,10 @@ $ sudo npm -g install grunt-cli karma bower
 $ npm install
 $ bower install
 $ grunt watch
+$ node index.js # small dummy server, not for production! 
 ```
 
-Finally, open `file:///path/to/kga-web-frontend/build/index.html` in your browser.
+Finally, open `http://localhost:3000` in your browser.
 
 ## Status
 
