@@ -57,29 +57,18 @@
                 Kleingruppenanmeldung
               </a>
             </li>
-            <li ui-sref-active="active" ng-show="admin && loggedIn" ng-show>
-              <a href ui-sref="admin">
-                <i class="fa fa-lock"></i>
-                Administration
-              </a>
+            <li class="dropdown" ui-sref-active="active" ng-show="admin && loggedIn">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-lock"></i> Administration <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href ui-sref="admin">Kleingruppen</a></li>
+                <li><a href ui-sref="admin">Studenten</a></li>
+              </ul>
             </li>
             <li ui-sref-active="active" ng-show="loggedIn">
               <a href ng-click="signOut()">
                 <i class="fa fa-sign-out"></i>
                 {{user.studentId}} abmelden
               </a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
             </li>
           </ul>
         </div>
