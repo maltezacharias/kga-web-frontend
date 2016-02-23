@@ -1,13 +1,17 @@
 {
   "name": "kga-web-frontend",
   "version": "0.0.1",
-  "description": "",
+  "description": "New design for a study group inscription app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Malte Zacharias",
+  "homepage": "https://github.com/maltezacharias/kga-web-frontend",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:maltezacharias/kga-web-frontend.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
