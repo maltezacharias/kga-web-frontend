@@ -30,7 +30,10 @@ angular.module( 'kga.home', [
         templateUrl: 'home/home.tpl.html'
       }
     },
-    data:{ pageTitle: 'Start' }
+    data:{
+      pageTitle: 'Start',
+      anonymousAccess: true
+    }
   });
 })
 

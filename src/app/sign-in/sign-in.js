@@ -13,7 +13,10 @@ angular.module( 'kga.sign-in', [
         templateUrl: 'sign-in/sign-in.tpl.html'
       }
     },
-    data:{ pageTitle: 'Einloggen' }
+    data:{ 
+      pageTitle: 'Einloggen',
+      anonymousAccess: true
+    }
   });
 })
 
