@@ -9,7 +9,7 @@ angular.module( 'kga.admin', [
     url: '/admin',
     views: {
       "main": {
-        controller: 'AdminCtrl',
+        controller: 'AdminCtrl as admin',
         templateUrl: 'admin/admin.tpl.html'
       }
     },
@@ -17,8 +17,9 @@ angular.module( 'kga.admin', [
   });
 })
 
-.controller( 'AdminCtrl', function AdminCtrl( $scope ) {
-  $scope.newGroup = {
+.controller( 'AdminCtrl', function AdminCtrl( ) {
+  var vm = this;
+  vm.newGroup = {
     number: '',
     name: '',
     capacity: 0

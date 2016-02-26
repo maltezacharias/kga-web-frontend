@@ -9,24 +9,29 @@ angular.module( 'kga.sign-in', [
     url: '/sign-in',
     views: {
       "main": {
-        controller: 'SignInCtrl',
+        controller: 'SignInCtrl as signIn',
         templateUrl: 'sign-in/sign-in.tpl.html'
       }
     },
-    data:{ 
+    data:{
       pageTitle: 'Einloggen',
       anonymousAccess: true
     }
   });
 })
 
-.controller( 'SignInCtrl', function SignInCtrl( $scope, $location, $rootScope ) {
-  $scope.signIn = function signIn() {
+.controller( 'SignInCtrl', function SignInCtrl( $state, $rootScope ) {
+  var vm = this;
+  vm.studentId = $rootScope.user ? $rootScope.user.studentId : '';
+  vm.password = '';
+  vm.signIn = signIn;
+
+  function signIn() {
     $rootScope.loggedIn = true;
     $rootScope.admin = true;
-    $rootScope.user = { studentId: 'n1542402' };
-    $location.path('/home');
-  };
+    $rootScope.user = { studentId: vm.studentId };
+    $state.go('home');
+  }
 })
 
 ;

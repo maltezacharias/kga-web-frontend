@@ -9,7 +9,7 @@ angular.module( 'kga.inscribe', [
     url: '/inscribe',
     views: {
       "main": {
-        controller: 'InscribeCtrl',
+        controller: 'InscribeCtrl as inscribe',
         templateUrl: 'inscribe/inscribe.tpl.html'
       }
     },
@@ -17,16 +17,30 @@ angular.module( 'kga.inscribe', [
   });
 })
 
-.controller( 'InscribeCtrl', function InscribeCtrl( $scope ) {
-  $scope.kleingruppen = [];
+.controller( 'InscribeCtrl', function InscribeCtrl( ) {
+  var vm = this;
+  vm.kleingruppen= [];
+  vm.filter = '';
+
+
   for (counter = 0; counter < 80; counter++) {
-    $scope.kleingruppen.push({
+    vm.kleingruppen.push({
       number: '' + counter ,
       name: 'Kleingruppe ' + counter,
-      remaining: Math.floor(Math.random()*10),
+      remaining: 10,
       capacity: 10
     });
   }
+
+  randomizeRemaining();
+
+  function randomizeRemaining() {
+    _.each(vm.kleingruppen, function (kleingruppe){
+      kleingruppe.remaining = Math.floor(Math.random()*10);
+    });
+    setTimeout(randomizeRemaining, Math.floor(Math.random()*200));
+  }
+
 })
 
 ;
