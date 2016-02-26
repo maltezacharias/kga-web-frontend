@@ -5,7 +5,8 @@ angular.module( 'kga', [
   'kga.sign-in',
   'kga.inscribe',
   'kga.admin',
-  'ui.router'
+  'ui.router',
+  'kga.user'
 ])
 
 .config( function myAppConfig ( $urlRouterProvider ) {
@@ -15,30 +16,30 @@ angular.module( 'kga', [
 .run( function run () {
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $rootScope, $state) {
-
+.controller( 'AppCtrl', function AppCtrl ( $rootScope, $state, user) {
+  var vm = this;
+  vm.user = user;
+  vm.signOut = signOut;
   var alwaysAllowedStates = ['home','sign-in'];
 
-  $scope.signOut = function signOut(){
-    $rootScope.loggedIn = false;
-    delete($rootScope.user);
-    $state.go('home');
-  };
-
-  $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
     // Check if no user is logged in and the state is not in the exception list
-    if (($rootScope.loggedIn !== true) && !toState.data.anonymousAccess ) {
+    if ((user.isLoggedIn() !== true) && !toState.data.anonymousAccess ) {
       // Prevent state change if state is not allowed
       event.preventDefault();
       $state.go('home');
     }
   });
 
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
-      $scope.pageTitle = toState.data.pageTitle + ' | kgaWeb' ;
+      vm.pageTitle = toState.data.pageTitle + ' | kgaWeb' ;
     }
   });
+
+  function signOut(){
+    user.logout();
+  }
 
 })
 

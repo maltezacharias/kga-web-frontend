@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="kleingruppe in inscribe.kleingruppen | filter:inscribe.filter ">
+        <tr ng-repeat="kleingruppe in inscribe.kleingruppen | filter:{ number: inscribe.filter }">
           <!--<td>{{kleingruppe.number}}</td>-->
           <td>{{kleingruppe.name}}</td>
           <td>{{kleingruppe.remaining}}</td>

@@ -1,7 +1,8 @@
 angular.module( 'kga.sign-in', [
   'ui.router',
   'placeholders',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'kga.user'
 ])
 
 .config(function config( $stateProvider ) {
@@ -20,16 +21,17 @@ angular.module( 'kga.sign-in', [
   });
 })
 
-.controller( 'SignInCtrl', function SignInCtrl( $state, $rootScope ) {
+.controller( 'SignInCtrl', function SignInCtrl( $state, $rootScope, user ) {
   var vm = this;
   vm.studentId = $rootScope.user ? $rootScope.user.studentId : '';
   vm.password = '';
   vm.signIn = signIn;
 
   function signIn() {
-    $rootScope.loggedIn = true;
-    $rootScope.admin = true;
-    $rootScope.user = { studentId: vm.studentId };
+    user.login(vm.studentId, vm.password).then(loginComplete);
+  }
+
+  function loginComplete() {
     $state.go('home');
   }
 })

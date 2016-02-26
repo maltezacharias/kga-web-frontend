@@ -26,7 +26,7 @@ angular.module( 'kga.home', [
     url: '/home',
     views: {
       "main": {
-        controller: 'HomeCtrl',
+        controller: 'HomeCtrl as home',
         templateUrl: 'home/home.tpl.html'
       }
     },
@@ -40,7 +40,7 @@ angular.module( 'kga.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope ) {
+.controller( 'HomeCtrl', function HomeController( ) {
 })
 
 ;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="kga" ng-controller="AppCtrl">
+<html ng-app="kga" ng-controller="AppCtrl as app">
   <head>
-    <title ng-bind="pageTitle"></title>
+    <title ng-bind="vm.pageTitle"></title>
     <!-- File encoding -->
     <meta charset="utf-8"/>
 
@@ -45,29 +45,29 @@
                 Start
               </a>
             </li>
-            <li ui-sref-active="active" ng-hide="loggedIn">
+            <li ui-sref-active="active" ng-hide="app.user.isLoggedIn()">
               <a href ui-sref="sign-in">
                 <i class="fa fa-sign-in"></i>
                 Anmelden
               </a>
             </li>
-            <li ui-sref-active="active" ng-show="loggedIn">
+            <li ui-sref-active="active" ng-show="app.user.isLoggedIn()">
               <a href ui-sref="inscribe">
                 <i class="fa fa-list"></i>
                 Kleingruppenanmeldung
               </a>
             </li>
-            <li class="dropdown" ui-sref-active="active" ng-show="admin && loggedIn">
+            <li class="dropdown" ui-sref-active="active" ng-show="app.user.isLoggedIn()">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-lock"></i> Administration <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href ui-sref="admin">Kleingruppen</a></li>
                 <li><a href ui-sref="admin">Studenten</a></li>
               </ul>
             </li>
-            <li ui-sref-active="active" ng-show="loggedIn">
-              <a href ng-click="signOut()">
+            <li ui-sref-active="active" ng-show="app.user.isLoggedIn()">
+              <a href ng-click="app.signOut()">
                 <i class="fa fa-sign-out"></i>
-                {{user.studentId}} abmelden
+                {{app.user.id}} abmelden
               </a>
             </li>
           </ul>
