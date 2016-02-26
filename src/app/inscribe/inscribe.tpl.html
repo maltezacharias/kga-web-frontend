@@ -31,11 +31,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="kleingruppe in inscribe.kleingruppen | filter:{ number: inscribe.filter }">
+        <tr ng-repeat="group in inscribe.groups | filter:{ number: inscribe.filter }">
           <!--<td>{{kleingruppe.number}}</td>-->
-          <td>{{kleingruppe.name}}</td>
-          <td>{{kleingruppe.remaining}}</td>
-          <td><button class="btn btn-primary" ng-click="inscribe()">Anmelden</button></td>
+          <td>{{group.identifier}}</td>
+          <td>{{group.remaining}}</td>
+          <td><button class="btn btn-primary" ng-click="inscribe.inscribe()">Anmelden</button></td>
         </tr>
       </tbody>
     </table>

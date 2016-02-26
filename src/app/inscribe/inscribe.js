@@ -1,7 +1,8 @@
 angular.module( 'kga.inscribe', [
   'ui.router',
   'placeholders',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'kga.studygroups'
 ])
 
 .config(function config( $stateProvider ) {
@@ -19,7 +20,7 @@ angular.module( 'kga.inscribe', [
 
 .controller( 'InscribeCtrl', function InscribeCtrl( studygroups ) {
   var vm = this;
-  vm.kleingruppen= studygroups.groups;
+  vm.groups= studygroups.groups;
   vm.filter = '';
 
 })

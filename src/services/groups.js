@@ -9,7 +9,7 @@
     };
 
     for (counter = 0; counter < 80; counter++) {
-      studygroupsService.groups.push(new Studygroup(counter,'KG '+counter));
+      studygroupsService.groups.push(new Studygroup(counter,'KG '+counter,10));
     }
 
     return studygroupsService;
