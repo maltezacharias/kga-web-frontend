@@ -1,6 +1,5 @@
 angular.module( 'kga.sign-in', [
   'ui.router',
-  'placeholders',
   'ui.bootstrap',
   'kga.user'
 ])

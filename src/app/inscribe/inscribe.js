@@ -1,6 +1,5 @@
 angular.module( 'kga.inscribe', [
   'ui.router',
-  'placeholders',
   'ui.bootstrap',
   'kga.studygroups'
 ])

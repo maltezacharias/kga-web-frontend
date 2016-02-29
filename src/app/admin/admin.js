@@ -1,6 +1,5 @@
 angular.module( 'kga.admin', [
   'ui.router',
-  'placeholders',
   'ui.bootstrap'
 ])
 
