@@ -22,8 +22,8 @@
     <div class="container">
       <div class="navbar navbar-default">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
-            ng-click="menuCollapsed = ! menuCollapsed">
+          <button type="button" class="navbar-toggle" ng-init="app.menuCollapsed = true"
+            ng-click="app.menuCollapsed = ! app.menuCollapsed">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -37,7 +37,7 @@
             </small>
           </div>
         </div>
-        <div class="collapse navbar-collapse" collapse="menuCollapsed">
+        <div class="collapse navbar-collapse" uib-collapse="app.menuCollapsed">
           <ul class="nav navbar-nav">
             <li ui-sref-active="active">
               <a href ui-sref="home">
@@ -57,9 +57,9 @@
                 Kleingruppenanmeldung
               </a>
             </li>
-            <li class="dropdown" ui-sref-active="active" ng-show="app.user.isLoggedIn()">
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-lock"></i> Administration <span class="caret"></span></a>
-              <ul class="dropdown-menu">
+            <li uib-dropdown ui-sref-active="active" ng-show="app.showAdminTab()">
+              <a href uib-dropdown-toggle id="admin-dropdown"><i class="fa fa-lock"></i> Administration <span class="caret"></span></a>
+              <ul uib-dropdown-menu aria-labelledby="admin-dropdown">
                 <li><a href ui-sref="admin">Kleingruppen</a></li>
                 <li><a href ui-sref="admin">Studenten</a></li>
               </ul>
