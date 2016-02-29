@@ -13,7 +13,10 @@ angular.module( 'kga.inscribe', [
         templateUrl: 'inscribe/inscribe.tpl.html'
       }
     },
-    data:{ pageTitle: 'In Kleingruppe anmelden' }
+    data:{
+      pageTitle: 'In Kleingruppe anmelden',
+      roles: ['student']
+    }
   });
 })
 
