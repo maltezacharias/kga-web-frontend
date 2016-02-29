@@ -67,7 +67,7 @@ module.exports = {
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-ui-utils/modules/route/route.js',
       'vendor/lodash/lodash.js',
-      'vendor/kjur/rsasign/jsrsasign-latest-all-min.js'
+      'vendor/jwt-decode/build/jwt-decode.min.js'
     ],
     css: [
     ],

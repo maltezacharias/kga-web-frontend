@@ -12,7 +12,10 @@ angular.module( 'kga.admin', [
         templateUrl: 'admin/admin.tpl.html'
       }
     },
-    data:{ pageTitle: 'Administration' }
+    data:{
+      pageTitle: 'Administration',
+      roles: ['administrator']
+    }
   });
 })
 

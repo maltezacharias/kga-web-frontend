@@ -2,7 +2,7 @@
 
   <form class="form-signin" ng-submit="signIn.signIn()">
     <h2 class="form-signin-heading">Einloggen für Kleingruppenanmeldung</h2>
-    Bitte loggen Sie sich mit Ihrer MUW-StudID (z.B. n0987654) und Ihrem Kennwort ein.
+    <p>Bitte loggen Sie sich mit Ihrer MUW-StudID (z.B. n0987654) und Ihrem Kennwort ein.</p>
     <label for="inputStudentId" class="sr-only">Matrikel-Nummer</label>
     <input  type="text"
             ng-model="signIn.studentId"
@@ -18,7 +18,10 @@
             class="form-control"
             placeholder="Passwort"
             required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit""><i class="fa fa-fw fa-key"></i> Einloggen</button>
+    <p class="bg-danger" ng-show="signIn.error">{{signIn.error}}</p>
+    <p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit""><i class="fa fa-fw fa-key"></i> Einloggen</button>
+    </p>
   </form>
 
 

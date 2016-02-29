@@ -20,12 +20,13 @@ angular.module( 'kga', [
   var vm = this;
   vm.user = user;
   vm.signOut = signOut;
+  vm.showAdminTab = function(){ return user.hasRole('administrator'); };
   var alwaysAllowedStates = ['home','sign-in'];
 
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
-    // Check if no user is logged in and the state is not in the exception list
-    if ((user.isLoggedIn() !== true) && !toState.data.anonymousAccess ) {
-      // Prevent state change if state is not allowed
+    // Check if roles are defined on the view
+    if (toState.data.roles && ( user.isLoggedIn() === false || _.intersection(toState.data.roles,user.roles).length === 0 ) ) {
+      // Prevent state change
       event.preventDefault();
       $state.go('home');
     }

@@ -24,14 +24,21 @@ angular.module( 'kga.sign-in', [
   var vm = this;
   vm.studentId = $rootScope.user ? $rootScope.user.studentId : '';
   vm.password = '';
+  vm.error = '';
   vm.signIn = signIn;
 
   function signIn() {
-    user.login(vm.studentId, vm.password).then(loginComplete);
+    vm.error = '';
+    user.login(vm.studentId, vm.password)
+      .then(loginComplete, loginFailed);
   }
 
   function loginComplete() {
     $state.go('home');
+  }
+
+  function loginFailed(error) {
+    vm.error = error;
   }
 })
 

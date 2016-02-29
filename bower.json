@@ -8,7 +8,7 @@
     "angular-bootstrap": "~1.2.0",
     "angular-ui-router": "~0.2",
     "lodash": "^4.5.1",
-    "kjur-jsrsasign": "jsrsasign#^5.0.6"
+    "jwt-decode": "^1.5.1"
   },
   "dependencies": {}
 }
