@@ -19,10 +19,10 @@
       verlieren Sie also nicht ihren bisherigen Kleingruppenplatz</p>
     </div>
     <div class="input-group"> <span class="input-group-addon">Filter</span>
-        <input ng-model="inscribe.filter" id="filter" type="text" class="form-control" placeholder="Type here...">
+        <input ng-model="inscribe.filter" id="filter" type="text" class="form-control" placeholder="Kleingruppennummer">
     </div>
-    <table class="table table-striped">
-      <thead>
+    <table class="table table-striped studygroups">
+			<thead>
         <tr>
           <!--<th>#</th>-->
           <th>Name</th>
@@ -31,11 +31,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="group in inscribe.groups | filter:{ number: inscribe.filter }">
+        <tr ng-repeat="group in inscribe.groups | groupNumber: inscribe.filter | orderBy: ['-available','-full','locked','number']">
           <!--<td>{{kleingruppe.number}}</td>-->
           <td>{{group.identifier}}</td>
           <td>{{group.remaining}}</td>
-          <td><button class="btn btn-primary" ng-click="inscribe.inscribe()">Anmelden</button></td>
+          <td>
+						<span ng-if="group.locked"><i class="fa fa-lock fa-fw"></i> Gesperrt</span>
+						<span ng-if="group.full"><i class="fa fa-minus-circle fa-fw red"></i> Voll</span>
+						<button class="btn btn-primary" ng-show="group.available" ng-click="inscribe.inscribe()">Anmelden</button>
+					</td>
         </tr>
       </tbody>
     </table>
