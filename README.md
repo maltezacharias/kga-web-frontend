@@ -36,8 +36,3 @@ able to fulfill the requirements of being used by >500 students simultaneously, 
 of which will depend on the backend (see above).
 
 Also I always wanted to try to create an angular SPA...
-
-## Participation
-
-Seriously? You found this repository, read up until this point *AND* would like to contribute?
-Please contact me ASAP ;)
